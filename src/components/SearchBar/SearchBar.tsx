@@ -25,6 +25,7 @@ const SearchBar = (props: ISearchBarProps) => {
             const config : IConfig = {key: hashKey, duration: 10000};
             memoizeUsers(getUsersApiCall, config, (response: any) => {
                 const suggestionsList = !!text ? response?.data?.filter((suggestion: any) => suggestion.name.toLowerCase().includes(debouncedText.toLowerCase())) : [];
+
                 if(suggestionsList.length) {
                     setSuggestionList(suggestionsList)
                 }else{
@@ -36,9 +37,7 @@ const SearchBar = (props: ISearchBarProps) => {
         }
     }
     useEffect(() => {
-        if(!!debouncedText) {
-            fetchUsers()
-        }
+        fetchUsers();
     }, [debouncedText])
 
     useEffect(() => {

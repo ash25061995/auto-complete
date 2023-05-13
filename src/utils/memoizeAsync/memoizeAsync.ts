@@ -47,10 +47,11 @@ export const memoizeAsync = () => {
             }
 
             //clear cache after given duration
-            setTimeout(() => {
+            const timeoutId = setTimeout(() => {
                 console.info(`Cleared cache for key = [${key}]`);
                 delete cache[key];
                 delete inProgressQueue[key];
+                clearTimeout(timeoutId);
             }, duration)
 
             //progress queue clean up

@@ -13,6 +13,7 @@ function App() {
   const updateSelectedValue = (value: string) => {
     setSelectedValue(value);
   }
+
   return (
     <div className="App">
       <SearchBar selectedValue={selectedValue} setSuggestionList={updateSuggestionList}/>
